@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Algorithms - Ruby Playground</title><link rel="stylesheet" href="./style.css"></head><body><h1>
+  <a id="title-link" href=".">The Algorithms Playground - <span id="language">Ruby</span></a>
+</h1>
+<p class="languages">
+  Switch to:
+  <a href="https://hatemhosny.github.io/thealgorithms-javascript/">JavaScript</a>
+  -
+  <a href="https://hatemhosny.github.io/thealgorithms-javascript/?lang=ts">TypeScript</a>
+  -
+  <a href="https://hatemhosny.github.io/thealgorithms-python/">Python</a>
+  -
+  <a href="https://hatemhosny.github.io/thealgorithms-r/">R</a>
+</p>
+<p>
+  Algorithm:
+  <select id="algorithm-select"></select>
+</p>
+<p>(<a target="_blank" id="source-link">Source</a>)</p>
+<div id="container" style="height: 80vh"></div>
+
+<div id="footer">
+  <p>
+    This page was built in
+    <a href="https://livecodes.io/" target="_blank">LiveCodes</a>
+    and
+    <a href="https://livecodes.io/docs/features/deploy" target="_blank">deployed</a>
+    to GitHub Pages.
+  </p>
+  <p>
+    <a href="https://livecodes.io/?activeEditor=script&amp;x=https://github.com/hatemhosny/thealgorithms-ruby/tree/gh-pages/src" target="_blank">Edit in LiveCodes</a>
+    -
+    <a href="https://github.com/hatemhosny/thealgorithms-ruby/" target="_blank">View on GitHub</a>
+  </p>
+</div>
+
+<script>
+const algorithms = [
+    "backtracking/generate_paranthesis",
+    "bit_manipulation/binary_and_operator",
+    "bit_manipulation/binary_count_setbits",
+    "bit_manipulation/binary_count_trailing_zeroes",
+    "bit_manipulation/binary_or_operator",
+    "bit_manipulation/binary_xor_operator",
+    "bit_manipulation/power_of_two",
+    "bit_manipulation/single_bit_binary_operations",
+    "ciphers/caesar",
+    "ciphers/merkle_hellman_cryptosystem",
+    "ciphers/rsa",
+    "conversions/temperature_conversions",
+    "conversions/weight_conversions",
+    "data_structures/arrays/3sum",
+    "data_structures/arrays/add_digits",
+    "data_structures/arrays/find_all_duplicates_in_an_array",
+    "data_structures/arrays/find_the_highest_altitude",
+    "data_structures/arrays/fizz_buzz",
+    "data_structures/arrays/get_products_of_all_other_elements",
+    "data_structures/arrays/good_pairs",
+    "data_structures/arrays/intersection",
+    "data_structures/arrays/max_69_number",
+    "data_structures/arrays/maximum_product_subarray",
+    "data_structures/arrays/maximum_subarray",
+    "data_structures/arrays/next_greater_element",
+    "data_structures/arrays/remove_elements",
+    "data_structures/arrays/richest_customer_wealth",
+    "data_structures/arrays/shortest_word_distance",
+    "data_structures/arrays/shuffle_array",
+    "data_structures/arrays/single_number",
+    "data_structures/arrays/sort_squares_of_an_array",
+    "data_structures/arrays/sorted_arrays_intersection",
+    "data_structures/arrays/sudoku",
+    "data_structures/arrays/two_sum",
+    "data_structures/arrays/two_sum_ii",
+    "data_structures/arrays/strings/almost_palindrome_checker",
+    "data_structures/arrays/strings/anagram_checker",
+    "data_structures/arrays/strings/jewels_and_stones",
+    "data_structures/arrays/strings/palindrome",
+    "data_structures/arrays/strings/remove_vowels",
+    "data_structures/binary_trees/avl_tree",
+    "data_structures/binary_trees/bst",
+    "data_structures/binary_trees/inorder_traversal",
+    "data_structures/binary_trees/invert",
+    "data_structures/binary_trees/postorder_traversal",
+    "data_structures/binary_trees/preorder_traversal",
+    "data_structures/disjoint_sets/disjoint_sets",
+    "data_structures/graphs/bfs",
+    "data_structures/graphs/topological_sort",
+    "data_structures/graphs/unweighted_graph",
+    "data_structures/graphs/weighted_graph",
+    "data_structures/hash_table/anagram_checker",
+    "data_structures/hash_table/arrays_intersection",
+    "data_structures/hash_table/common_characters",
+    "data_structures/hash_table/find_all_duplicates_in_an_array",
+    "data_structures/hash_table/fizz_buzz",
+    "data_structures/hash_table/good_pairs",
+    "data_structures/hash_table/isomorphic_strings",
+    "data_structures/hash_table/richest_customer_wealth",
+    "data_structures/hash_table/two_sum",
+    "data_structures/hash_table/uncommon_words",
+    "data_structures/heaps/max_heap",
+    "data_structures/linked_lists/circular_linked_list",
+    "data_structures/linked_lists/doubly_linked_list",
+    "data_structures/linked_lists/singly_linked_list",
+    "data_structures/queues/circular_queue",
+    "data_structures/queues/queue",
+    "data_structures/stacks/stack",
+    "data_structures/tries/trie",
+    "discrete_mathematics/euclidean_gcd",
+    "discrete_mathematics/exteded_euclidean_algorithm",
+    "discrete_mathematics/lcm",
+    "dynamic_programming/climbing_stairs",
+    "dynamic_programming/coin_change",
+    "dynamic_programming/count_sorted_vowel_strings",
+    "dynamic_programming/editdistance",
+    "dynamic_programming/fibonacci",
+    "dynamic_programming/house_robber",
+    "dynamic_programming/knapsack",
+    "dynamic_programming/ones_and_zeros",
+    "dynamic_programming/pascal_triangle_ii",
+    "electronics/ohms_law",
+    "maths/3nPlus1",
+    "maths/abs",
+    "maths/abs_max",
+    "maths/abs_min",
+    "maths/add",
+    "maths/add_digits",
+    "maths/aliquot_sum",
+    "maths/armstrong_number",
+    "maths/average_mean",
+    "maths/average_median",
+    "maths/binary_to_decimal",
+    "maths/ceil",
+    "maths/count_sorted_vowel_strings",
+    "maths/decimal_to_binary",
+    "maths/factorial",
+    "maths/factorial_non_recursive_non_iterative",
+    "maths/fibonacci",
+    "maths/find_max",
+    "maths/find_min",
+    "maths/lucas_series",
+    "maths/number_of_digits",
+    "maths/pascal_triangle_ii",
+    "maths/power_of_two",
+    "maths/prime_number",
+    "maths/roman_to_integer",
+    "maths/square_root",
+    "maths/sum_of_digits",
+    "other/fisher_yates",
+    "other/number_of_days",
+    "project_euler/README.md",
+    "project_euler/problem_001/sol1",
+    "project_euler/problem_002/sol1",
+    "project_euler/problem_003/sol1",
+    "project_euler/problem_003/sol2",
+    "project_euler/problem_004/sol1",
+    "project_euler/problem_004/sol2",
+    "project_euler/problem_005/sol1",
+    "project_euler/problem_006/sol1",
+    "project_euler/problem_007/sol1",
+    "project_euler/problem_010/sol1",
+    "project_euler/problem_014/sol1",
+    "project_euler/problem_020/sol1",
+    "project_euler/problem_021/sol1",
+    "project_euler/problem_022/p022_names.txt",
+    "project_euler/problem_022/sol1",
+    "project_euler/problem_025/sol1",
+    "searches/binary_search",
+    "searches/depth_first_search",
+    "searches/double_linear_search",
+    "searches/fibonacci_search",
+    "searches/jump_search",
+    "searches/linear_search",
+    "searches/number_of_islands",
+    "searches/recursive_double_linear_search",
+    "searches/recursive_linear_search",
+    "searches/ternary_search",
+    "sorting/bead_sort",
+    "sorting/binary_insertion_sort",
+    "sorting/bogo_sort",
+    "sorting/bubble_sort",
+    "sorting/bucket_sort",
+    "sorting/cocktail_sort",
+    "sorting/comb_sort",
+    "sorting/counting_sort",
+    "sorting/gnome_sort",
+    "sorting/heap_sort",
+    "sorting/insertion_sort",
+    "sorting/merge_sort",
+    "sorting/pancake_sort",
+    "sorting/quicksort",
+    "sorting/radix_sort",
+    "sorting/selection_sort",
+    "sorting/shell_sort",
+    "sorting/sort_color",
+    "sorting/sort_tests",
+    "strings/boyer_moore_horspool_search",
+    "strings/max_k_most_frequent_words",
+];
+
+  const params = new URLSearchParams(window.location.search);
+  window.lang = {
+    name: "ruby",
+    title: "Ruby",
+    ext: "rb",
+    repo: "https://github.com/TheAlgorithms/Ruby",
+    algorithms,
+    defaultAlgorithm: "maths/fibonacci",
+  };
+
+  window.algorithmSelect = document.getElementById("algorithm-select");
+  document.getElementById("source-link").href = window.lang.repo;
+  document.getElementById("language").innerText = window.lang.title;
+
+  algorithms.forEach((algorithm) => {
+    const option = document.createElement("option");
+    option.value = algorithm;
+    option.innerText = algorithm;
+    option.id = algorithm;
+    algorithmSelect.appendChild(option);
+  });
+
+  const selected =
+    (params.get("algorithm") &&
+      algorithms.find((algorithm) => algorithm === params.get("algorithm"))) ||
+    window.lang.defaultAlgorithm;
+  document.getElementById(selected).selected = true;
+</script>
+<script src="./script.js" type="module"></script></body></html>
